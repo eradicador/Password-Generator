@@ -7,10 +7,13 @@ var generateBtn = document.querySelector("#generate");
   var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   var numeric = "0123456789";
   var punctuation = "!@#$%^&*()_+~`|}{[]\:;?><,./-=";
- 
+//  added prompts for user
   function generatePassword() {
     var numberOfCharacters = prompt("How many characters do you want?")
-
+    var lowercase = confirm("do you want lowercase characters?")
+    var uppercase = confirm("do you want upper characters?")
+    var numeric = confirm("do you want numbers?")
+    var punctuation = confirm("do you want special characters?")
   }
 
 
