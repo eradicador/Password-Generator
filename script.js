@@ -1,42 +1,44 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-
 // I need a new, secure password
-  // var length = (len)?(len):(10);
   var lowercase = "abcdefghijklmnopqrstuvwxyz"; 
   var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   var numeric = "0123456789";
   var punctuation = "!@#$%^&*()_+~`|}{[]\:;?><,./-=";
+  var total = ""
+  var password = ""
 //  added prompts for user
   function generatePassword() {
-    var numberOfCharacters = prompt("How many characters do you want?")
-    var lowercase = confirm("do you want lowercase characters?")
-    var uppercase = confirm("do you want upper characters?")
-    var numeric = confirm("do you want numbers?")
-    var punctuation = confirm("do you want special characters?")
+    var numberOfCharacters = prompt("How many characters do you want the password to be?")
+    // length of at least 8 characters and no more than 128 characters
+    while(numberOfCharacters <= 8 || numberOfCharacters >= 128) {
+      alert("Password length must be between 8 to 128 characters, try again please");
+      numberOfCharacters = prompt("How many characters do you want the password to be?")
+      console.log("len:", numberOfCharacters)
+    }
+    var lowercase = confirm("do you want lowercase characters for your password?");
+    var uppercase = confirm("do you want upper characters for your password?");
+    var numeric = confirm("do you want numbers for your password?");
+    var punctuation = confirm("do you want special characters for your password?");
+
+
+// lower  the 
+    // get  random character from the lower container   // math.floor math.random   (get a number )
+    var index = Math.floor(Math.random * lowercase.length)
+    password = password + lowercase[index]
+    // total = total + lowercase
+
+// upper 
+ // get  random character from the upper container 
+    // total = total + uppercase
+
+
+  /// you will have some characters inside of the password  1 low 1 num   total has all the lowe char and all the numbers  len = 10
+  
+  // fill the passworkd unitl get the length  /// pick random characters from total  get 8 more characters  // loop to get the rest of the characters
+
+  return password
   }
-
-
-
-
-//   while( password.length<length ) {
-//       entity1 = Math.ceil(string.length * Math.random()*Math.random());
-//       entity2 = Math.ceil(numeric.length * Math.random()*Math.random());
-//       entity3 = Math.ceil(punctuation.length * Math.random()*Math.random());
-//       hold = string.charAt( entity1 );
-//       hold = (password.length%2==0)?(hold.toUpperCase()):(hold);
-//       character += hold;
-//       character += numeric.charAt( entity2 );
-//       character += punctuation.charAt( entity3 );
-//       password = character;
-//   }
-//   password=password.split('').sort(function(){return 0.5-Math.random()}).join('');
-//   return password.substr(0,len);
-// }
-
-// console.log( password_generator() );
-
-
 
 
 
