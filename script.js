@@ -1,19 +1,19 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 // I need a new, secure password
-  var lowercase = "abcdefghijklmnopqrstuvwxyz"; 
-  var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  var numeric = "0123456789";
-  var punctuation = "!@#$%^&*()_+~`|}{[]\:;?><,./-=";
-  var total = ""
-  var password = ""
+  var lowerChars = "abcdefghijklmnopqrstuvwxyz"; 
+  var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  var numberChars = "0123456789";
+  var punctuationChars = "!@#$%^&*()_+~`|}{[]\:;?><,./-=";
+  var avaiableChars = ""
+  var guaranteedChars = ""
 //  added prompts for user
   function generatePassword() {
-    var numberOfCharacters = prompt("How many characters do you want the password to be?")
+    var numberOfCharacters = prompt("How many characters do you want the password to be between 8 to 128?")
     // length of at least 8 characters and no more than 128 characters
     while(numberOfCharacters <= 7 || numberOfCharacters >= 129) {
       alert("Password length must be between 8 to 128 characters, try again please");
-      numberOfCharacters = prompt("How many characters do you want the password to be?")
+      numberOfCharacters = prompt("How many characters do you want the password to be between 8 to 128?")
       console.log("len:", numberOfCharacters)
     }
     var lowercase = confirm("do you want lowercase characters for your password?");
@@ -22,21 +22,29 @@ var generateBtn = document.querySelector("#generate");
     var punctuation = confirm("do you want special characters for your password?");
 
     // get  random character from the lower container   // math.floor math.random   (get a number )
-    if (lowercase) {Math.floor(Math.random * lowercase.length);
-      password = password + lowercase[total]
+    if (lowercase) {
+      guaranteedChars += randomize(lowerchars)
+      avaiableChars += lowerchars
       console.log(lowercase);
     }
-    if (uppercase) {Math.floor(Math.random * uppercase.length);
-      password = password + lowercase[total]
+    if (uppercase) {
+      guaranteedChars += randomize(upperchars)
+      avaiableChars += upperchars
       console.log(uppercase);
     }
-    if (numeric) {Math.floor(Math.random * numeric.length);
-      password = password + lowercase[total]
+    if (numeric) {
+      guaranteedChars += randomize(numberchars)
+      avaiableChars += numberchars
       console.log(numeric);
     }
-    if (punctuation) {Math.floor(Math.random * punctuation.length);
-      password = password + lowercase[total]
+    if (punctuation) {
+      guaranteedChars += randomize(punctuationChars)
+      avaiableChars += punctuationChars
       console.log(punctuation);
+    }
+    for (let index = 0; index < array.length; index++) {
+      const element = array[index];
+      
     }
     var total = lowercase.concat(uppercase);
     var total = numeric.concat(punctuation);
@@ -45,7 +53,11 @@ var generateBtn = document.querySelector("#generate");
   return password
   }
 
-
+function randomize (characters) {
+  var randomIndex = Math.floor(Math.random() * characters.length);
+  console.log(randomIndex)
+  return characters[randomIndex] 
+}
 
 
 // WHEN I click the button to generate a password
