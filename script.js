@@ -11,7 +11,7 @@ var generateBtn = document.querySelector("#generate");
   function generatePassword() {
     var numberOfCharacters = prompt("How many characters do you want the password to be?")
     // length of at least 8 characters and no more than 128 characters
-    while(numberOfCharacters <= 8 || numberOfCharacters >= 128) {
+    while(numberOfCharacters <= 7 || numberOfCharacters >= 129) {
       alert("Password length must be between 8 to 128 characters, try again please");
       numberOfCharacters = prompt("How many characters do you want the password to be?")
       console.log("len:", numberOfCharacters)
@@ -21,22 +21,27 @@ var generateBtn = document.querySelector("#generate");
     var numeric = confirm("do you want numbers for your password?");
     var punctuation = confirm("do you want special characters for your password?");
 
-
-// lower  the 
     // get  random character from the lower container   // math.floor math.random   (get a number )
-    var index = Math.floor(Math.random * lowercase.length)
-    password = password + lowercase[index]
-    // total = total + lowercase
-
-// upper 
- // get  random character from the upper container 
-    // total = total + uppercase
-
-
-  /// you will have some characters inside of the password  1 low 1 num   total has all the lowe char and all the numbers  len = 10
+    if (lowercase) {Math.floor(Math.random * lowercase.length);
+      password = password + lowercase[total]
+      console.log(lowercase);
+    }
+    if (uppercase) {Math.floor(Math.random * uppercase.length);
+      password = password + lowercase[total]
+      console.log(uppercase);
+    }
+    if (numeric) {Math.floor(Math.random * numeric.length);
+      password = password + lowercase[total]
+      console.log(numeric);
+    }
+    if (punctuation) {Math.floor(Math.random * punctuation.length);
+      password = password + lowercase[total]
+      console.log(punctuation);
+    }
+    var total = lowercase.concat(uppercase);
+    var total = numeric.concat(punctuation);
   
   // fill the passworkd unitl get the length  /// pick random characters from total  get 8 more characters  // loop to get the rest of the characters
-
   return password
   }
 
