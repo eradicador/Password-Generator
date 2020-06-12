@@ -26,7 +26,7 @@ function generatePassword() {
   var punctuation = confirm("do you want special characters for your password?");
   console.log('Punctuation ' + punctuation);
 
-  
+
   if (lowercase) {
     guaranteedChars += randomize(lowerChars)
     avaiableChars += lowerChars
