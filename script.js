@@ -1,6 +1,6 @@
 // hooking into the button in the html
 var generateBtn = document.querySelector("#generate");
-// Arrays characters for the password
+// Arrays of characters for the password
 var lowerChars = "abcdefghijklmnopqrstuvwxyz";
 var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var numberChars = "0123456789";
@@ -11,8 +11,9 @@ function generatePassword() {
   var guaranteedChars = ""
   // prompts for the user
   var numberOfCharacters = prompt("How many characters do you want the password to be between 8 to 128?")
-  // length of at least 8 characters and no more than 128 characters
+  // used a while statement loop: length of at least 8 characters and no more than 128 characters
   while (numberOfCharacters <= 7 || numberOfCharacters >= 129) {
+    // if specified condition is false it will prompt the alert
     alert("Password length must be between 8 to 128 characters, try again please");
     numberOfCharacters = prompt("How many characters do you want the password to be between 8 to 128?")
     console.log("len: " + numberOfCharacters)
