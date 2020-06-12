@@ -1,63 +1,75 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-// I need a new, secure password
-  var lowerChars = "abcdefghijklmnopqrstuvwxyz"; 
-  var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  var numberChars = "0123456789";
-  var punctuationChars = "!@#$%^&*()_+~`|}{[]\:;?><,./-=";
+// Arrays characters for the password
+var lowerChars = "abcdefghijklmnopqrstuvwxyz";
+var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var numberChars = "0123456789";
+var punctuationChars = "!@#$%^&*()_+~`|}{[]\:;?><,./-=";
+
+function generatePassword() {
   var avaiableChars = ""
   var guaranteedChars = ""
-//  added prompts for user
-  function generatePassword() {
-    var numberOfCharacters = prompt("How many characters do you want the password to be between 8 to 128?")
-    // length of at least 8 characters and no more than 128 characters
-    while(numberOfCharacters <= 7 || numberOfCharacters >= 129) {
-      alert("Password length must be between 8 to 128 characters, try again please");
-      numberOfCharacters = prompt("How many characters do you want the password to be between 8 to 128?")
-      console.log("len:", numberOfCharacters)
-    }
-    var lowercase = confirm("do you want lowercase characters for your password?");
-    var uppercase = confirm("do you want upper characters for your password?");
-    var numeric = confirm("do you want numbers for your password?");
-    var punctuation = confirm("do you want special characters for your password?");
+  // prompts for the user
+  var numberOfCharacters = prompt("How many characters do you want the password to be between 8 to 128?")
+  // length of at least 8 characters and no more than 128 characters
+  while (numberOfCharacters <= 7 || numberOfCharacters >= 129) {
+    alert("Password length must be between 8 to 128 characters, try again please");
+    numberOfCharacters = prompt("How many characters do you want the password to be between 8 to 128?")
+    console.log("len: " + numberOfCharacters)
+  }
+  var lowercase = confirm("do you want lowercase characters for your password?");
+  console.log('lower Case: ' + lowercase);
+  var uppercase = confirm("do you want upper characters for your password?");
+  console.log('Upper Case: ' + uppercase);
+  var numeric = confirm("do you want numbers for your password?");
+  console.log('Numeric ' + numeric);
+  var punctuation = confirm("do you want special characters for your password?");
+  console.log('Punctuation ' + punctuation);
 
-    // get  random character from the lower container   // math.floor math.random   (get a number )
-    if (lowercase) {
-      guaranteedChars += randomize(lowerchars)
-      avaiableChars += lowerchars
-      console.log(lowercase);
-    }
-    if (uppercase) {
-      guaranteedChars += randomize(upperchars)
-      avaiableChars += upperchars
-      console.log(uppercase);
-    }
-    if (numeric) {
-      guaranteedChars += randomize(numberchars)
-      avaiableChars += numberchars
-      console.log(numeric);
-    }
-    if (punctuation) {
-      guaranteedChars += randomize(punctuationChars)
-      avaiableChars += punctuationChars
-      console.log(punctuation);
-    }
-    for (let index = 0; index < array.length; index++) {
-      const element = array[index];
-      
-    }
-    var total = lowercase.concat(uppercase);
-    var total = numeric.concat(punctuation);
-  
-  // fill the passworkd unitl get the length  /// pick random characters from total  get 8 more characters  // loop to get the rest of the characters
-  return password
+  // get  random character from the lower container   // math.floor math.random   (get a number )
+  if (lowercase) {
+    guaranteedChars += randomize(lowerChars)
+    avaiableChars += lowerChars
+  }
+  if (uppercase) {
+    guaranteedChars += randomize(upperChars)
+    avaiableChars += upperChars
+  }
+  if (numeric) {
+    guaranteedChars += randomize(numberChars)
+    avaiableChars += numberChars
+
+  }
+  if (punctuation) {
+    guaranteedChars += randomize(punctuationChars)
+    avaiableChars += punctuationChars
+
   }
 
-function randomize (characters) {
-  var randomIndex = Math.floor(Math.random() * characters.length);
-  console.log(randomIndex)
-  return characters[randomIndex] 
+  var password = guaranteedChars;
+  for (let i = guaranteedChars.length; i < numberOfCharacters; i++) {
+    password += randomize(avaiableChars)
+  }
+
+  return password
 }
+
+//picks one random character from string
+function randomize(characters) {
+  var randomIndex = Math.floor(Math.random() * characters.length);
+  // console.log(randomIndex)
+  return characters[randomIndex]
+}
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
+}
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
 
 
 // WHEN I click the button to generate a password
@@ -74,15 +86,3 @@ function randomize (characters) {
 // THEN a password is generated that matches the selected criteria
 // WHEN the password is generated
 // THEN the password is either displayed in an alert or written to the page
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
