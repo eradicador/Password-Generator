@@ -60,6 +60,7 @@ function generatePassword() {
   //used the for loop: the var i = guaranteedChars by the length of the string, i must be less than number of "numberOfCharacters", i increases the value
   var password = guaranteedChars;
   for (let i = guaranteedChars.length; i < numberOfCharacters; i++) {
+    //adding password string to randomize function
     password += randomize(avaiableChars)
   }
   // The return statement stops the execution of function and returns a value from that function.
