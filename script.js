@@ -9,29 +9,30 @@ var punctuationChars = "!@#$%^&*()_+~`|}{[]\:;?><,./-=";
 function generatePassword() {
   var avaiableChars = ""
   var guaranteedChars = ""
-  // prompts for the user
+  // first prompt for the user
   var numberOfCharacters = prompt("How many characters do you want the password to be between 8 to 128?")
-  // used a if statement: length of password at least 8 characters and no more than 128 characters
-  if (numberOfCharacters <= 7 && numberOfCharacters >= 129) {
+  // used a while loop: length of password at least 8 characters and no more than 128 characters
+  while (numberOfCharacters <= 7 || numberOfCharacters >= 129) {
     // if specified condition is false it will prompt the alert
     alert("Password length must be between 8 to 128 characters, try again please");
+    //2nd prompt will come up after the alert
     numberOfCharacters = prompt("How many characters do you want the password to be between 8 to 128?")
     // message the console with number of characters selected by the user
     console.log("len: " + numberOfCharacters)
   }
-  //2nd prompt for the user if above statement is true
+  //3rd prompt for the user if above statement is true
   var lowercase = confirm("do you want lowercase characters for your password?");
   //message the console with the character selected by the user
   console.log('lower Case: ' + lowercase);
-  //3rd prompt for the user
+  //4th prompt for the user
   var uppercase = confirm("do you want upper characters for your password?");
   //message the console with the character selected by the user
   console.log('Upper Case: ' + uppercase);
-  //4th prompt for the user
+  //5th prompt for the user
   var numeric = confirm("do you want numbers for your password?");
   //message the console with the character selected by the user
   console.log('Numeric ' + numeric);
-  //5th prompt for the user
+  //6th prompt for the user
   var punctuation = confirm("do you want special characters for your password?");
   //message the console with the character selected by the user
   console.log('Punctuation ' + punctuation);
@@ -40,7 +41,7 @@ function generatePassword() {
     guaranteedChars += randomize(lowerChars)
     avaiableChars += lowerChars
   }
-  //uppercase variable is true it will random pick a letter from upperChars
+  //if uppercase variable is true it will random pick a letter from upperChars
   if (uppercase) {
     guaranteedChars += randomize(upperChars)
     avaiableChars += upperChars
@@ -63,24 +64,22 @@ function generatePassword() {
     //adding password string to randomize function
     password += randomize(avaiableChars)
   }
-  // The return statement stops the execution of function and returns a value from that function.
+  //The return statement stops the execution of function and returns a value from that function
   return password
   //close the function generatePassword()
 }
-
-//picks one random character from string
+//function picks one random character from string
 function randomize(characters) {
   //math.floor Math.random returns random characters + the lenght to the user 
   var randomIndex = Math.floor(Math.random() * characters.length);
-  // The return statement stops the execution of function and returns a value from that function.
+  //the return statement stops the execution of function and returns a value from that function
   return characters[randomIndex]
 }
-
-// this function calls another function is hooking into 2 elements for the password
+//this function calls another function is hooking into 2 elements for the password
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
-// when user clicked button it writes the function above
+//when user clicked button it writes the function above
 generateBtn.addEventListener("click", writePassword);
