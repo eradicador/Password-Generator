@@ -5,14 +5,14 @@ var lowerChars = "abcdefghijklmnopqrstuvwxyz";
 var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var numberChars = "0123456789";
 var punctuationChars = "!@#$%^&*()_+~`|}{[]\:;?><,./-=";
-
+//this function generates the password
 function generatePassword() {
   var avaiableChars = ""
   var guaranteedChars = ""
   // prompts for the user
   var numberOfCharacters = prompt("How many characters do you want the password to be between 8 to 128?")
-  // used a while statement loop: length of at least 8 characters and no more than 128 characters
-  while (numberOfCharacters <= 7 || numberOfCharacters >= 129) {
+  // used a if statement: length of password at least 8 characters and no more than 128 characters
+  if (numberOfCharacters <= 7 && numberOfCharacters >= 129) {
     // if specified condition is false it will prompt the alert
     alert("Password length must be between 8 to 128 characters, try again please");
     numberOfCharacters = prompt("How many characters do you want the password to be between 8 to 128?")
@@ -57,12 +57,12 @@ function generatePassword() {
     avaiableChars += punctuationChars
 
   }
-  //i is password = guaranteedChars let is doing???
+  //used the for loop: the var i = guaranteedChars by the length of the string, i must be less than number of "numberOfCharacters", i increases the value
   var password = guaranteedChars;
   for (let i = guaranteedChars.length; i < numberOfCharacters; i++) {
     password += randomize(avaiableChars)
   }
-
+  // The return statement stops the execution of function and returns a value from that function.
   return password
   //close the function generatePassword()
 }
@@ -71,7 +71,7 @@ function generatePassword() {
 function randomize(characters) {
   //math.floor Math.random returns random characters + the lenght to the user 
   var randomIndex = Math.floor(Math.random() * characters.length);
-  // console.log(randomIndex)
+  // The return statement stops the execution of function and returns a value from that function.
   return characters[randomIndex]
 }
 
